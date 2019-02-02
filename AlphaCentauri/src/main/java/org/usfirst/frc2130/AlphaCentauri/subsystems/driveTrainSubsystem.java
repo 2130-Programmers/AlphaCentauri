@@ -54,7 +54,7 @@ public class driveTrainSubsystem extends Subsystem {
         
         
         
-        leftMotorSlave = new WPI_VictorSPX(3);
+        leftMotorSlave = new WPI_VictorSPX(8);
         
         
         

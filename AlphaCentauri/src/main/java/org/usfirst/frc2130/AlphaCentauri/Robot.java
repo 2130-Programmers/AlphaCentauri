@@ -91,6 +91,7 @@ public class Robot extends TimedRobot {
         autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        Robot.elevatorSubsystem.startupRoutine();
     }
 
     /**
@@ -108,6 +109,7 @@ public class Robot extends TimedRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        Robot.elevatorSubsystem.startupRoutine();
     }
 
     /**
@@ -116,5 +118,11 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+
+        SmartDashboard.putString("Desired Prox", Robot.elevatorSubsystem.returnDesiredProx());
+        SmartDashboard.putBoolean("Low Prox", Robot.elevatorSubsystem.getProx("Low"));
+        SmartDashboard.putBoolean("Mid Prox", Robot.elevatorSubsystem.getProx("Mid"));
+        SmartDashboard.putBoolean("Max Prox", Robot.elevatorSubsystem.getProx("Max"));
+
     }
 }
