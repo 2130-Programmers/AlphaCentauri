@@ -81,7 +81,6 @@ public class OI {
         SmartDashboard.putData("HandlerPositionCommand", new HandlerPositionCommand());
         SmartDashboard.putData("RocketPlacementForwardCommand", new RocketPlacementForwardCommand());
         SmartDashboard.putData("runIntakeCommand", new runIntakeCommand());
-        SmartDashboard.putData("runOuttakeCommand", new runOuttakeCommand());
         SmartDashboard.putData("RocketPlacementBackCommand", new RocketPlacementBackCommand());
         SmartDashboard.putData("changeHandlerBoolean", new changeHandlerBoolean());
 
