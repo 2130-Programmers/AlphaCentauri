@@ -81,7 +81,7 @@ public class driveTrainSubsystem extends Subsystem {
         differentialDrive.setMaxOutput(1.0);
 
         
-        shiftingSolenoid = new DoubleSolenoid(0, 0, 1);
+        shiftingSolenoid = new DoubleSolenoid(0, 2, 3);
         addChild("shiftingSolenoid",shiftingSolenoid);
         
         

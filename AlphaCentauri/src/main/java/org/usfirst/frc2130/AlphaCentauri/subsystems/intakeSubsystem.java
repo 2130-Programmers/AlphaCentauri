@@ -53,7 +53,7 @@ public class intakeSubsystem extends Subsystem {
         addChild("positionSolenoid",positionSolenoid);
         
         
-        rocketPlacementSolenoid = new DoubleSolenoid(0, 6, 7);
+        rocketPlacementSolenoid = new DoubleSolenoid(0, 0, 1);
         addChild("rocketPlacementSolenoid",rocketPlacementSolenoid);
         
         
@@ -105,16 +105,18 @@ public class intakeSubsystem extends Subsystem {
 
     public void handlerPosition() {
         if (handlerPositionSetting) {
-            positionSolenoid.set(Value.kForward);
+            handlerPlayPosition();
         }
         else {
-            positionSolenoid.set(Value.kReverse);
+            handlerDefensePosition();
         }
     }
+
     public void startingPosition() {
         handlerPositionSetting = true;
-        positionSolenoid.set(Value.kForward);
+        handlerPlayPosition();
     }
+
     public void setHandlerBoolean() {
         if(i == 0 && Robot.oi.handlerPositionValue()) {
             handlerPositionSetting = !handlerPositionSetting;
@@ -128,8 +130,26 @@ public class intakeSubsystem extends Subsystem {
     public void handlerRocketForward() {
         rocketPlacementSolenoid.set(Value.kForward);
     }
+
     public void handlerRocketBackward() {
         rocketPlacementSolenoid.set(Value.kReverse);
     }
+
+    public void runIntake() {
+        if(Robot.oi.driverJoystick.getRawAxis(2) == 0 && Robot.oi.driverJoystick.getRawAxis(3) == 0){
+            leftRollerMotor.set(0);
+            rightRollerMotor.set(0);
+        }else if(Robot.oi.driverJoystick.getRawAxis(2) > 0 && Robot.oi.driverJoystick.getRawAxis(3) > 0) {
+            leftRollerMotor.set(0);
+            rightRollerMotor.set(0);
+        }else if(Robot.oi.driverJoystick.getRawAxis(2) > 0 && Robot.oi.driverJoystick.getRawAxis(3) == 0) {
+            leftRollerMotor.set(-1);
+            rightRollerMotor.set(-1);
+        }else if(Robot.oi.driverJoystick.getRawAxis(2) == 0 && Robot.oi.driverJoystick.getRawAxis(3) > 0) {
+            leftRollerMotor.set(1);
+            rightRollerMotor.set(1);
+        }        
+        }     
+
 }
 
