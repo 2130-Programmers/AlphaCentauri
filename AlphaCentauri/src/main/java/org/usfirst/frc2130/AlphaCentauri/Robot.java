@@ -91,6 +91,7 @@ public class Robot extends TimedRobot {
         autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        Robot.driveTrainSubsystem.startShifterPosition();
     }
 
     /**
@@ -108,6 +109,7 @@ public class Robot extends TimedRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        Robot.driveTrainSubsystem.startShifterPosition();
     }
 
     /**
